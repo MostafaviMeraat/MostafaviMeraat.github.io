@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git second task</title>
+    <link rel="stylesheet" href="..//css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"   crossorigin="anonymous">
+    <style>
+
+        body{
+            background: linear-gradient(165deg , #fff,#8dcde9);
+            /* background-color: lightblue; */
+            margin:1rem;
+            width: 98%;
+            height: 96.5vh;
+            overflow-x: hidden;
+        }
+        .main{
+            width: auto;
+            height: auto;
+            /* background-color: red; */
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+        }
+        .lableSkills{
+            width: auto;
+            height: auto;
+            /* background-color: rebeccapurple; */
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .myCheckBox{
+            width: auto;
+            height: auto;
+            display: flex;
+            flex-flow: row nowrap;
+            /* background-color: red; */
+            justify-content: center;
+        }
+        .ch{
+            margin-right: 1em;
+        }
+        .myBtn{
+            margin-top: 5em;
+            margin-bottom: 1em;
+            width: auto;
+            height: auto;
+            /* background-color: red; */
+            display: flex;
+           justify-content: center;
+        }
+        .myInput{
+            margin-top: 1em;
+        }
+
+
+
+    </style>
+
+</head>
+<body class="border border-4 border-opacity-50 border-primary rounded">
+
+<div class="mainAll">
+    <div class="main">
+     
+            <div style="width: 25%;" class="myInput">
+                <lable for="id1" class="form-lable">User Name</lable>
+                <input type="email" autocomplete="off" class="form-control" id="id1" aria-describedby="help-id" >
+                <div id="help-id" class="form-text" >Enter your User Name</div>
+            </div>
+
+            <div style="width: 25%;" class="myInput">
+                <lable for="id2" class="form-lable">Email Address</lable>
+                <input type="email" autocomplete="off" class="form-control" id="id2" aria-describedby="help-id" >
+                <div id="help-id" class="form-text" >Enter your E-Mail Address</div>
+            </div>
+
+            <div style="width: 25%;" class="myInput">
+                <lable for="id3" class="form-lable">Password </lable>
+                <input type="password" autocomplete="off" class="form-control" id="id3" aria-describedby="help-id" >
+                <div id="help-id" class="form-text" >Enter your Password</div>
+            </div>
+
+      
+
+    </div>
+
+        <div class="container" style="display: flex ; justify-content:center;  margin-top:1em ;  max-width:100vw; font-size: 18px;">
+            <lable>Sex : &nbsp;&nbsp;&nbsp;</lable>
+
+            <div class="form-check">
+                <input type="radio" autocomplete="off" class="form-check-input" name="radio" id="radioid1">
+                <lable class="form-check-lable" for="radioid1">Female &nbsp;</lable>
+            </div>
+
+            <div class="form-check">
+                <input type="radio" autocomplete="off" class="form-check-input" name="radio" id="radioid2">
+                <lable class="form-check-lable" for="radioid2">Male</lable>
+            </div>
+
+        </div><br><br>
+
+
+        <div class="lableSkills">
+            <lable >Choose your Skills :</lable>
+        </div><br>
+        <div class="myCheckBox"> 
+            <div class="ch">
+                <label> Manage</label>
+                <input type="checkbox">
+            </div>
+            <div class="ch">
+                <label> Programing</label>
+                <input type="checkbox">
+            </div>
+            <div class="ch">
+                <label> Teaching</label>
+                <input type="checkbox">
+            </div>
+            <div class="ch">
+                <label> Selling</label>
+                <input type="checkbox">
+            </div>
+
+            
+
+        </div>
+
+        <div class="myBtn">
+            <button class="btn btn-primary" type="submit" onclick="checkInputs()">submit</button><br><br>
+        </div>
+
+    
+        <div class="toast-container position-fixed botton-0 start-0 p-3" >
+            <div class="toast fade bg-warning "  id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+
+                <div class="toast-header" id="toastHeader">
+                    <img src="" class="rounded me-2" />
+                    <strong class="me-auto"></strong>
+                    <small id="toastSmall"></small>
+
+                    <button class="btn-close" type="button" data-bs-dismiss="toast" aria-lable="close"></button>
+                </div>
+                <div class="toast-body">
+
+                </div>
+            </div>
+        </div>
+</div>
+
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        
+        hideToast = () => {
+
+            let toast = document.getElementById("liveToast");
+            toast.setAttribute('class', 'hide bg-warning fade toast');
+            return;
+        }
+
+        checkInputs = () => {
+            let myArr = [];
+
+            const userName = document.getElementById("id1").value;
+            const email = document.getElementById("id2").value;
+            const password = document.getElementById("id3").value;
+
+            myArr.push(userName, email, password);
+
+            for (let i=0;i<myArr.length;i++){
+                if(myArr[i]==""){
+                    toast(i);
+                    
+                }
+            }
+            return  
+        }
+
+        toast = (a) => {
+            let input = document.getElementById(`id${a+1}`);
+            let toastContainer = document.getElementById("liveToast");
+            let toastStrong = document.getElementsByClassName("me-auto");
+            let toastBody = document.getElementsByClassName("toast-body");
+            toastContainer.setAttribute('class', 'show bg-warning fade toast');
+            toastStrong[0].innerText = input.previousElementSibling.innerText;
+            toastBody[0].innerText = "Can't be empty!";
+            setTimeout(hideToast,4000);
+            return;
+        }       
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html> 
